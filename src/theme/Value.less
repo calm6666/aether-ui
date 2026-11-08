@@ -1,0 +1,208 @@
+.ae-field-value {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    line-height: var(--height-control-default);
+    outline: 0;
+    padding: 0;
+    padding-right: 24px;
+    border: 1px solid var(--ae-default-border);
+    border-radius: var(--ae-border-radius-small);
+    color: var(--ae-color-text-1);
+    background-color: var(--ae-color-bg-0);
+    background-image: none;
+    transition: all ease-in-out .15s;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:focus-within,
+    &:hover {
+        border-color: var(--ae-color-primary);
+        -webkit-box-shadow: 0 0 0 2px rgb(45 140 240 / 20%);
+        box-shadow: 0 0 0 2px rgb(45 140 240 / 20%);
+    }
+
+    &.ae-field-disabled {
+        border-color: var(--ae-color-disabled-border);
+        background-color: var(--ae-color-disabled-bg);
+        opacity: 1;
+        cursor: not-allowed;
+        color: var(--ae-color-disabled-text);
+        box-shadow: none;
+
+        &.ae-field-clearable:hover {
+            .ae-field-clear {
+                display: none;
+            }
+
+            .ae-field-cert {
+                display: '';
+            }
+        }
+    }
+}
+
+.ae-form-item-error .ae-field-value {
+    border-color: var(--ae-color-error);
+}
+
+.ae-field-selection,
+.ae-field-text {
+    display: block;
+    line-height: calc(var(--height-control-default) - 2px);
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 8px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .ae-tag-group {
+        margin: 3px 4px 3px 0;
+    }
+
+    .ae-input-wrapper {
+        height: auto;
+    }
+}
+
+.ae-field-selection {
+    min-height: calc(var(--height-control-default) - 2px);
+
+    >span {
+        line-height: calc(var(--height-control-default) - 2px) !important;
+    }
+}
+
+.ae-field-text {
+    height: calc(var(--height-control-default) - 2px);
+    position: relative;
+
+    .ae-input-wrapper {
+        position: absolute;
+        inset: 0;
+        left: 8px;
+        background: transparent;
+    }
+
+    &:has(.ae-input-wrapper>input:focus) {
+        color: var(--ae-color-text-3);
+    }
+}
+
+.ae-field-clear,
+.ae-field-cert {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    transform: translate(0, -50%);
+    color: rgba(128, 134, 149, 0.5);
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.25s;
+    opacity: 1;
+}
+
+.ae-field-clear {
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ae-field-clearable:hover {
+    .ae-field-clear {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .ae-field-cert {
+        opacity: 0;
+    }
+}
+
+.ae-field-value-small {
+    line-height: var(--height-control-small);
+
+    .ae-field-text {
+        height: calc(var(--height-control-small) - 2px);
+        line-height: calc(var(--height-control-small) - 2px);
+        font-size: 12px;
+        padding-left: 4px;
+    }
+
+    .ae-field-selection {
+        min-height: calc(var(--height-control-small) - 2px);
+
+        >span {
+            line-height: calc(var(--height-control-small) - 2px) !important;
+        }
+    }
+
+    .ae-field-prepend {
+        padding: 3px 5px;
+    }
+}
+
+.ae-field-value-large {
+    line-height: var(--height-control-large);
+
+    .ae-field-text {
+        min-height: calc(var(--height-control-large) - 2px);
+        line-height: calc(var(--height-control-large) - 2px);
+    }
+
+    .ae-field-selection {
+        min-height: calc(var(--height-control-large) - 2px);
+
+        >span {
+            line-height: calc(var(--height-control-large) - 2px) !important;
+        }
+    }
+
+    .ae-field-prepend {
+        padding: 3px 12px;
+    }
+}
+
+.ae-field-prepend {
+    padding: 3px 8px;
+    font-size: inherit;
+    font-weight: 400;
+    color: var(--ae-color-text-1);
+    text-align: center;
+    background-color: var(--ae-color-fill-1);
+    border-radius: var(--ae-border-radius-small) 0 0 var(--ae-border-radius-small);
+    white-space: nowrap;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    line-height: 30px;
+}
+
+.ae-field-placeholder {
+    color: var(--ae-color-disabled-text);
+}
+
+.ae-select-input {
+    &::-webkit-input-placeholder {
+        color: var(--ae-color-disabled-text);
+    }
+
+    &:-moz-placeholder {
+        color: var(--ae-color-disabled-text);
+    }
+
+    &::-ms-input-placeholder {
+        color: var(--ae-color-disabled-text);
+    }
+}

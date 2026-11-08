@@ -1,0 +1,161 @@
+.ae-time-picker {
+    display: inline-flex;
+    width: 100%;
+    &:focus-within,
+    &:hover {
+        .ae-field-value {
+            border-color: var(--ae-color-primary);
+            -webkit-box-shadow: 0 0 0 2px rgb(45 140 240 / 20%);
+            box-shadow: 0 0 0 2px rgb(45 140 240 / 20%);
+        }
+        .ae-field-disabled {
+            border-color: var(--ae-color-disabled-border);
+            background-color: var(--ae-color-disabled-bg);
+            box-shadow: none;
+            color: var(--ae-color-disabled-text);
+        }
+    }
+}
+
+.ae-time-picker-wrap {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--ae-color-bg-3);
+}
+.ae-time-picker-pane:first-child {
+    .ae-time-picker-cell:last-child {
+        border-right: 1px solid var(--ae-default-border);
+    }
+}
+.ae-time-picker-options{
+    display: inline-flex;
+    flex-direction: row;
+    &:after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.ae-time-picker-cell{
+    width: 56px;
+    max-height: 182px;
+    float: left;
+    overflow: hidden;
+    border-left: 1px solid var(--ae-default-border);
+    position: relative;
+    scroll-behavior: smooth;
+    ul{
+        width: 100%;
+        margin: 0;
+        padding: 0 0 156px;
+        list-style: none;
+        li{
+            width: 100%;
+            height: 26px;
+            line-height: 26px;
+            margin: 0;
+            box-sizing: content-box;
+            text-align: center;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: pointer;
+            list-style: none;
+            transition: background .2s ease-in-out;
+        }
+    }
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    &:hover{
+        overflow-y: auto;
+    }
+}
+.ae-time-picker-cell ul li:hover{
+    background: var(--ae-color-fill-0);
+}
+.ae-time-picker-cell:first-child{
+    border-left: 0;
+    border-radius: var(--ae-border-radius-small) 0 0 var(--ae-border-radius-small);
+}
+.ae-time-picker-item-active{
+    // color: var(--ae-primary-color-active);
+    background: var(--ae-color-primary-light-hover);
+}
+.ae-time-picker-item-disabled{
+    color: var(--ae-color-disabled-text);
+    cursor: not-allowed!important;
+    background: transparent!important;
+}
+
+.ae-time-picker-clearable:hover{
+    .ae-time-picker-clear{
+        display: inline-block;
+    }
+    .ae-time-picker-cert{
+        display: none;
+      }
+}
+.ae-time-picker-text-placeholder{
+    color: var(--ae-color-disabled-text);
+}
+
+.ae-time-picker-prepend{
+    padding: 4px 8px;
+    font-size: inherit;
+    font-weight: 400;
+    color: var(--ae-color-text-1);
+    text-align: center;
+    background-color: var(--ae-color-fill-1);
+    border-radius: var(--ae-border-radius-small);
+    white-space: nowrap;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    margin-left: -6px;
+}
+
+.ae-time-picker-disabled{
+    &:focus-within .ae-time-picker-value,
+    &:hover .ae-time-picker-value,
+    .ae-time-picker-value{
+        border-color: var(--ae-color-disabled-border);
+        background-color: #f3f3f3;
+        opacity: 1;
+        cursor: not-allowed;
+        color: #ccc;
+    }
+    .ae-time-picker-value:focus{
+        border-color: var(--ae-color-disabled-border);
+    }
+}
+.ae-time-picker-footer,
+.ae-time-picker-header {
+    padding: 10px;
+}
+.ae-time-picker-header {
+    border-bottom: 1px solid var(--ae-default-border);
+    text-align: center;
+}
+.ae-time-picker-footer {
+    border-top: 1px solid var(--ae-default-border);
+}
+.ae-time-picker-small {
+    .ae-time-picker-value {
+        height: 24px;
+        .ae-time-picker-text {
+            font-size: 12px;
+        }
+    }
+}
+.ae-time-picker-large {
+    .ae-time-picker-value {
+        height: 40px;
+        .ae-time-picker-text {
+            height: 40px;
+            line-height: 40px;
+        }
+    }
+}

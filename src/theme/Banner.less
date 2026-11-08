@@ -1,0 +1,100 @@
+.ae-banner {
+    padding: 12px;
+    color: var(--ae-color-text-0);
+}
+
+.ae-banner-body {
+    display: flex;
+    flex-direction: row;
+}
+.ae-banner-content {
+    display: flex;
+    flex: 1 1;
+    align-items: top;
+}
+
+.ae-banner-icon {
+    display: flex;
+    margin-right: 12px;
+    font-size: 24px;
+    align-items: flex-start;
+}
+.ae-banner-desc {
+    font-size: 14px;
+    line-height: 20px;
+}
+.ae-banner-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    margin-left: 12px;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--ae-color-fill-0);
+        border: 0 solid transparent;
+        transition: background-color 0.2s ease-in;
+    }
+}
+.ae-banner-full {
+    .ae-banner-content {
+        justify-content: center;
+    }
+    .ae-banner-content-body,
+    .ae-banner-icon {
+        display: flex;
+        align-items: center;
+    }
+    .ae-banner-desc {
+        margin: 0;
+    }
+}
+.ae-banner-title {
+    font-size: 18px;
+    line-height: 24px;
+}
+.ae-banner-desc {
+    margin-top: 2px;
+}
+.ae-banner-not-full {
+    border-radius: var(--ae-border-radius-small);
+    .ae-banner-desc {
+        color: var(--ae-color-text-0);
+    }
+}
+.ae-banner-extra {
+    margin-top: 8px;
+}
+.ae-banner-info {
+    background-color: var(--ae-color-info-light-default);
+    color: var(--ae-color-info);
+    &.ae-banner-bordered {
+        border: 1px solid var(--ae-color-info-disabled);
+    }
+}
+
+.ae-banner-warning {
+    background-color: var(--ae-color-warning-light-default);
+    color: var(--ae-color-warning);
+    &.ae-banner-bordered {
+        border: 1px solid var(--ae-color-warning-disabled);
+    }
+}
+
+.ae-banner-success {
+    background-color: var(--ae-color-success-light-default);
+    color: var(--ae-color-success);
+    &.ae-banner-bordered {
+        border: 1px solid var(--ae-color-success-disabled);
+    }
+}
+
+.ae-banner-error {
+    background-color: var(--ae-color-error-light-default);
+    color: var(--ae-color-error);
+    &.ae-banner-bordered {
+        border: 1px solid var(--ae-color-error-disabled);
+    }
+}

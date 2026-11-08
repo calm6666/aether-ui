@@ -1,0 +1,187 @@
+.ae-progress{
+  position: relative;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0px;
+  color: var(--ae-color-text-2);
+
+  .ae-progress-outer{
+    flex: 1;
+    display: flex;
+  }
+  .ae-progress-inner{
+    display: inline-block;
+    width: 100%;
+    background-color: var(--ae-color-fill-0);
+    border-radius: 100px;
+    vertical-align: middle;
+  }
+  .ae-progress-info{
+    display: inline-block;
+    margin-left: 8px;
+    font-family: tahoma;
+    font-size: 12px;
+  }
+  &.ae-progress-line{
+      svg{
+          width: 12px;
+          height: 12px;
+      }
+  }
+
+  .ae-progress-bar{
+    border-radius: 100px;
+    background-color: var(--ae-primary-color);
+    -webkit-transition: all .4s cubic-bezier(.08,.82,.17,1) 0s;
+    transition: all .4s cubic-bezier(.08,.82,.17,1) 0s;
+    position: relative;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    .ae-progress-info {
+      color: #fff!important;
+      margin-right: 10px;
+    }
+  }
+  .ae-progress-bar-path {
+    stroke: var(--ae-primary-color);
+  }
+
+  &.ae-progress-finished{
+    .ae-progress-bar{
+      background-color: rgb(var(--ae-green-4));
+    }
+    .ae-progress-info{
+      color: rgb(var(--ae-green-4));
+    }
+    .ae-progress-bar-path {
+      stroke: rgb(var(--ae-green-4));
+    }
+  }
+
+  &.ae-progress-error{
+    .ae-progress-bar{
+      background-color: rgb(var(--ae-red-4));
+    }
+    .ae-progress-info{
+      color: rgb(var(--ae-red-4));
+    }
+    .ae-progress-bar-path {
+      stroke: rgb(var(--ae-red-4));
+    }
+  }
+
+  &.ae-progress-active{
+    .ae-progress-bar{
+      &:before{
+        content: "";
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        border-radius: 10px;
+        -webkit-animation: ae-progress-active 2.4s cubic-bezier(.23,1,.32,1) infinite;
+        animation: ae-progress-active 2.4s cubic-bezier(.23,1,.32,1) infinite;
+      }
+    }
+  }
+
+  &.ae-progress-circle{
+    width: auto;
+    .ae-progress-outer{
+      width: auto;
+      padding-right: 0;
+      margin-right: 0;
+    }
+    .ae-progress-inner{
+      position: relative;
+      line-height: 1;
+      font-size: 25px;
+      background-color: transparent;
+    }
+    .ae-progress-info{
+      display: block;
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      line-height: 1;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      left: 0;
+      font-family: tahoma;
+      margin: 0;
+      font-size: 24px;
+    }
+    circle {
+      stroke: var(--ae-color-fill-0);
+    }
+  }
+
+  .ae-progress-bar-path{
+    transition: stroke-dashoffset 0.3s ease 0s, stroke 0.3s ease;
+  }
+  &.ae-progress-hide-info{
+    .ae-progress-info {
+      display: none;
+    }
+  }
+}
+
+@-webkit-keyframes ae-progress-dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ae-progress-dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes ae-progress-active {
+  0% {
+    opacity: .1;
+    width: 0
+  }
+
+  20% {
+    opacity: .5;
+    width: 0
+  }
+
+  to {
+    opacity: 0;
+    width: 100%
+  }
+}
+
+@keyframes ae-progress-active {
+  0% {
+    opacity: .1;
+    width: 0
+  }
+
+  20% {
+    opacity: .5;
+    width: 0
+  }
+
+  to {
+    opacity: 0;
+    width: 100%
+  }
+}

@@ -1,0 +1,157 @@
+#ae-modal-portal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+}
+.ae-modal-wrap {
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    outline: none;
+    display: none;
+    &.ae-modal-visible {
+        display: flex;
+        z-index: 5000;
+        .ae-draggable {
+            pointer-events: all;
+        }
+    }
+    .ae-draggable {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+    &.ae-modal-open {
+        .ae-draggable {
+            opacity: 1;
+        }
+    }
+    &.ae-modal-fullscreen {
+        .ae-draggable {
+            top: 0!important;
+            left: 0!important;
+            right: 0!important;
+            bottom: 0!important;
+            transform: translate(0, 0)!important;
+        }
+        .ae-modal {
+            min-width: 100%;
+            min-height: 100%;
+        }
+    }
+}
+.ae-modal-mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4000;
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+    background: rgba(0,0,0,.2);
+    opacity: 0;
+    pointer-events: none;
+    &.ae-modal-mask-visible {
+        visibility: visible;
+        display: block;
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+.ae-modal{
+    position: relative;
+    border-radius: var(--ae-border-radius-small);
+    flex-direction: column;
+    min-width: 40vw;
+    min-height: 0vh;
+    background-color: var(--ae-color-bg-3);
+    display: flex;
+    transition: all 0.05s linear;
+    -webkit-box-shadow: var(--ae-shadow-elevated);
+    -moz-box-shadow: var(--ae-shadow-elevated);
+    box-shadow: var(--ae-shadow-elevated);
+}
+.ae-modal-body{
+    flex: 1;
+    padding: 20px;
+}
+.ae-modal-instance {
+    .ae-modal-body {
+        display: flex;
+        flex-direction: row;
+    }
+    .ae-modal-left {
+        width: 40px;
+    }
+    .ae-modal-icon-info {
+        color: var(--ae-primary-color);
+    }
+    .ae-modal-icon-success{
+        color: var(--ae-color-success);
+    }
+    .ae-modal-icon-warning{
+        color: var(--ae-color-warning);
+    }
+    .ae-modal-icon-error{
+        color: var(--ae-color-error);
+    }
+    .ae-modal-icon-confirm{
+        color: var(--ae-primary-color);
+    }
+    .ae-modal-right {
+        flex: 1;
+    }
+}
+.ae-modal-header{
+    position: relative;
+    padding: 10px 20px;
+    height: 40px;
+    box-shadow: var(--ae-color-fill-1) 0px 0px 2px;
+    cursor: move;
+}
+.ae-modal-close{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    border-radius: 2px;
+    transition: all 0.2s;
+    padding: 2px;
+
+    &:hover {
+        background: var(--ae-color-fill-1);
+    }
+}
+.ae-modal-footer{
+    box-shadow: var(--ae-color-fill-1) 0px 0px 2px;
+    text-align: right;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+}
+.ae-modal-footer-start {
+    justify-content: flex-start;
+}
+.ae-modal-footer-end {
+    justify-content: flex-end;
+}
+
+.ae-modal-footer-reverse {
+    flex-direction: row-reverse;
+}

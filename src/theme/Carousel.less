@@ -1,0 +1,307 @@
+.ae-carousel {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
+
+.ae-carousel-actions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px 0 24px;
+}
+
+.ae-carousel-actions-top {
+    bottom: auto;
+    top: 4px;
+}
+
+.ae-carousel-actions-left,
+.ae-carousel-actions-right {
+    left: auto;
+    right: 4px;
+    top: 0;
+    bottom: 0;
+    height: auto;
+    width: 32px;
+    padding: 24px 0 16px 0;
+    flex-direction: column;
+}
+
+.ae-carousel-actions-left {
+    right: auto;
+    left: 4px;
+}
+
+.ae-carousel-actions-with-arrow {
+    justify-content: space-between;
+}
+
+.ae-carousel-arrow {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #dedede;
+    background-color: rgba(var(--ae-grey-8), 0.3);
+    cursor: pointer;
+    transition: all 0.2s linear;
+    z-index: 10;
+
+    &:hover {
+        background-color: rgba(var(--ae-grey-8), 0.6);
+        color: #fff;
+    }
+}
+
+.ae-carousel {
+    &:hover {
+        .ae-carousel-arrow-hover {
+            display: inline-flex;
+        }
+    }
+
+    .ae-carousel-arrow-always {
+        display: inline-flex;
+    }
+}
+
+.ae-carousel-list {
+    flex: 1;
+    display: flex;
+    height: 100%;
+    position: relative;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-property: transform;
+}
+
+.ae-carousel-dots {
+    list-style: none;
+    display: inline-flex;
+    flex-direction: row;
+    gap: 8px;
+    z-index: 10;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.ae-carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: var(--ae-carousel-dot-color, rgba(var(--ae-grey-8), 0.3));
+}
+
+.ae-carousel-dot-active {
+    background-color: var(--ae-carousel-active-dot-color, rgba(var(--ae-white), 1));
+}
+
+.ae-carousel-dots-line {
+    .ae-carousel-dot {
+        width: 20px;
+        height: 6px;
+        border-radius: 8px;
+    }
+
+    .ae-carousel-dot-active {
+        width: 25px;
+    }
+}
+
+.ae-carousel-dots-columnar {
+    align-items: flex-end;
+
+    .ae-carousel-dot {
+        width: 6px;
+        height: 16px;
+        border-radius: 8px;
+    }
+
+    .ae-carousel-dot-active {
+        height: 24px;
+    }
+}
+
+.ae-carousel-dots-right,
+.ae-carousel-dots-left {
+    flex-direction: column;
+
+    &.ae-carousel-dots-columnar {
+        .ae-carousel-dot {
+            width: 16px;
+            height: 6px;
+        }
+
+        .ae-carousel-dot-active {
+            width: 24px;
+        }
+    }
+
+    &.ae-carousel-dots-line {
+        .ae-carousel-dot {
+            width: 6px;
+            height: 20px;
+        }
+
+        .ae-carousel-dot-active {
+            height: 25px;
+        }
+    }
+}
+
+.ae-carousel-dots-right,
+.ae-carousel-dots-bottom {
+    &.ae-carousel-dots-columnar {
+        align-items: flex-end;
+        align-self: flex-end;
+    }
+}
+
+.ae-carousel-dots-left,
+.ae-carousel-dots-top {
+    &.ae-carousel-dots-columnar {
+        align-items: flex-start;
+        align-self: flex-start;
+    }
+}
+
+.ae-carousel-dots-bottom {
+    &.ae-carousel-dots-columnar {
+        margin-bottom: 4px;
+    }
+}
+
+.ae-carousel-dots-top {
+    &.ae-carousel-dots-columnar {
+        margin-top: 4px;
+    }
+}
+
+.ae-carousel-dots-left {
+    &.ae-carousel-dots-columnar {
+        margin-left: 4px;
+    }
+}
+
+.ae-carousel-dots-right {
+    &.ae-carousel-dots-columnar {
+        margin-right: 4px;
+    }
+}
+
+.ae-carousel-item {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    display: block;
+
+    img {
+        -webkit-user-drag: none;
+        -moz-user-drag: none;
+        -ms-user-drag: none;
+        user-drag: none;
+    }
+}
+
+.ae-carousel-fade {
+    .ae-carousel-item {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        transition: all 0.3s ease;
+        opacity: 0;
+    }
+}
+
+.ae-carousel-fade {
+    .ae-carousel-item-fade-start {
+        z-index: 1;
+        opacity: 0;
+    }
+
+    .ae-carousel-item-fade-active {
+        opacity: 1;
+    }
+}
+
+.ae-carousel-card {
+    .ae-carousel-list {
+        perspective: 1000px;
+    }
+
+    .ae-carousel-item {
+        position: absolute;
+        left: 50%;
+        z-index: 0;
+        opacity: 0;
+        transform: translateX(-50%) translateZ(-400px);
+        transition-property: opacity, transform;
+        transition-duration: 300ms;
+    }
+}
+
+.ae-carousel-v {
+    .ae-carousel-list {
+        flex-direction: column;
+    }
+}
+
+.ae-carousel-item-active-init {
+    visibility: visible;
+    animation-duration: 0ms;
+}
+
+@keyframes carousel-item-keyframe-slide-in {
+    0% {
+        transform: var(--ae-carousel-animation-start);
+    }
+
+    to {
+        transform: var(--ae-carousel-animation-end);
+    }
+}
+
+@keyframes carousel-item-keyframe-slide-out {
+    0% {
+        transform: var(--ae-carousel-animation-start);
+    }
+
+    to {
+        transform: var(--ae-carousel-animation-end);
+    }
+}
+
+
+@keyframes carousel-item-keyframe-fade-in {
+    0% {
+        opacity: var(--ae-carousel-animation-start);
+    }
+
+    to {
+        opacity: var(--ae-carousel-animation-end);
+    }
+}
+
+
+@keyframes carousel-item-keyframe-fade-out {
+    0% {
+        opacity: var(--ae-carousel-animation-start);
+    }
+
+    to {
+        opacity: var(--ae-carousel-animation-end);
+    }
+}

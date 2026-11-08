@@ -1,0 +1,64 @@
+.ae-input-group {
+    display: inline-flex;
+    align-items: center;
+}
+
+.ae-input-compact-item:not(.ae-input-compact-last-item):not(.ae-input-compact-first-item),
+.ae-input-compact-item:not(.ae-input-compact-last-item):not(.ae-input-compact-first-item) .ae-field-value {
+    border-start-end-radius: 0;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+}
+
+.ae-input-compact-item:not(.ae-input-compact-last-item):not(.ae-input-compact-first-item).ae-button-theme-outline {
+    &::after {
+        border-start-end-radius: 0;
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
+        border-end-end-radius: 0;
+    }
+}
+
+.ae-input-compact-item:not(.ae-input-compact-last-item).ae-input-compact-first-item,
+.ae-input-compact-item:not(.ae-input-compact-last-item).ae-input-compact-first-item .ae-field-value {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+}
+
+.ae-input-compact-item:not(.ae-input-compact-last-item).ae-input-compact-first-item.ae-button-theme-outline {
+    &::after {
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+    }
+}
+
+
+.ae-input-compact-item:not(.ae-input-compact-first-item).ae-input-compact-last-item,
+.ae-input-compact-item:not(.ae-input-compact-first-item).ae-input-compact-last-item .ae-field-value {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+}
+
+.ae-input-compact-item:not(.ae-input-compact-first-item).ae-input-compact-last-item.ae-button-theme-outline {
+    &::after {
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
+    }
+}
+
+.ae-input-compact-item:not(.ae-input-compact-last-item),
+.ae-input-compact-item:not(.ae-input-compact-last-item) .ae-field-value {
+    margin-inline-end: -1px;
+}
+
+.ae-input-compact-item:hover,
+.ae-input-compact-item:focus,
+.ae-input-compact-item:focus-within,
+.ae-input-compact-item:active {
+    z-index: 2;
+}
+
+.ae-input-compact-item:not(.ae-spinner):not(.ae-button.ae-button-empty):not(.ae-button.ae-button-icon-only) {
+    width: auto;
+}

@@ -1,0 +1,35 @@
+.ae-tree-select {
+    display: inline-flex;
+    width: 100%;
+    position: relative;
+
+    // &:focus-within,
+    // &:hover {
+    //     .ae-field-value {
+    //         border-color: var(--ae-color-primary);
+    //         -webkit-box-shadow: 0 0 0 2px rgb(45 140 240 / 20%);
+    //         box-shadow: 0 0 0 2px rgb(45 140 240 / 20%);
+    //     }
+    //     .ae-field-disabled {
+    //         border-color: var(--ae-color-disabled-border);
+    //         background-color: #f3f3f3;
+    //         box-shadow: none;
+    //         color: #ccc;
+    //     }
+    // }
+    .ae-dropdown {
+        width: fit-content;
+        min-width: 100%;
+    }
+}
+
+.ae-tree-select-wrap {
+    max-width: 100%;
+    background-color: var(--ae-color-bg-3);
+    box-sizing: border-box;
+    border-radius: var(--ae-border-radius-small);
+    z-index: 900;
+    padding: 10px;
+    max-height: 250px;
+    overflow: auto;
+}

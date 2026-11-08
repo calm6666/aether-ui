@@ -1,0 +1,65 @@
+.ae-view {
+    display: flex;
+    flex: 1;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+}
+
+.ae-h-view {
+    flex-direction: row;
+}
+
+.ae-v-view {
+    flex-direction: column;
+}
+
+.ae-fixed-view {
+    position: fixed;
+    inset: 0;
+}
+
+.ae-both-side {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ae-view-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: var(--ae-layout-dialog-level);
+    transform: translate(-50%, -50%);
+}
+
+.ae-drag-handler-v {
+    width: 5px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    cursor: col-resize;
+
+    .ae-drag-helper {
+        cursor: col-resize;
+    }
+}
+
+.ae-drag-helper {
+    position: relative;
+    z-index: -1;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1);
+    transform: translate(0, 0);
+}
+
+.ae-drag-handler-dragging {
+    .ae-drag-helper {
+        opacity: 1;
+        z-index: var(--ae-layout-loading-level);
+    }
+}

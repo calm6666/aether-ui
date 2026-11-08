@@ -1,0 +1,121 @@
+.ae-divider {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: var(--ae-divider-border-color, var(--ae-color-text-0));
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    -webkit-font-feature-settings: "tnum";
+    font-feature-settings: "tnum";
+
+    .ae-divider-text {
+        display: inline-block;
+        padding: 0 1em;
+    }
+}
+
+.ae-divider-h {
+    display: flex;
+    clear: both;
+    width: 100%;
+    min-width: 100%;
+    margin: 20px 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    .ae-divider-text {
+        white-space: nowrap;
+    }
+
+    &:after,
+    &:before {
+        position: relative;
+        top: 50%;
+        width: 50%;
+        border-top: 1px solid var(--ae-divider-border-color, rgba(var(--ae-grey-9), .18));
+        border-bottom: 0;
+        transform: scaleY(0.5);
+        align-self: center;
+        content: "";
+    }
+
+    &.ae-divider-dashed {
+
+        &:after,
+        &:before {
+            border-top-style: dashed;
+        }
+    }
+
+    &.ae-divider-left {
+        &:before {
+            width: 8%;
+        }
+
+        &:after {
+            width: 92%;
+        }
+    }
+
+    &.ae-divider-right {
+        &:before {
+            width: 92%;
+        }
+
+        &:after {
+            width: 8%;
+        }
+    }
+}
+
+.ae-divider-v {
+    position: relative;
+    top: -.06em;
+    display: inline-block;
+    height: .9em;
+    margin: 0 8px;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    vertical-align: middle;
+    border-top: 0;
+
+    &:before {
+        position: relative;
+        display: block;
+        height: 100%;
+        border-left: 1px solid var(--ae-divider-border-color, rgba(var(--ae-grey-9), .18));
+        transform: scaleX(0.5);
+        align-self: center;
+        content: "";
+    }
+}
+
+@themes: primary, success, warning, error, info, blue, green, red, yellow, magenta, pink, volcano, orange, gold, lime, cyan, geekblue, purple;
+
+each(@themes, {
+        .ae-divider-@{value} {
+            &.ae-divider-h {
+
+                &:after,
+                &:before {
+                    border-top-color: lch(from var(~"--ae-theme-color-@{value}") calc(l ~"+"10) c h / 0.5);
+                }
+            }
+
+            &.ae-divider-v {
+
+                &:after,
+                &:before {
+                    border-left-color: lch(from var(~"--ae-theme-color-@{value}") calc(l ~"+"10) c h / 0.5);
+                }
+            }
+
+            .ae-divider-text {
+                color: var(~"--ae-theme-color-@{value}");
+            }
+        }
+    }
+
+);

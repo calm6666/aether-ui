@@ -1,0 +1,186 @@
+.ae-text {
+    color: var(--ae-color-text-0);
+    font-size: var(--font-size-regular);
+    line-height: 20px;
+    background-clip: text;
+    mark {
+        color: inherit;
+        background-color: var(--ae-color-primary-light-default);
+    }
+    code {
+        border: 1px solid var(--ae-default-border);
+        border-radius: 2px;
+        color: var(--ae-color-text-2);
+        background-color: var(--ae-color-fill-1);
+        padding: 2px 4px;
+    }
+    a {
+        color: var(--ae-color-link);
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover {
+            color: var(--ae-color-link-hover);
+        }
+        &:active {
+            text-decoration: none;
+            color: var(--ae-color-link-active);
+        }
+        .ae-icon {
+            margin-right: 3px;
+        }
+    }
+}
+.ae-typograghy-paragraph {
+    margin: 0;
+    color: var(--ae-color-text-0);
+}
+.ae-typograghy-paragraph-secondary,
+.ae-text-secondary {
+    color: var(--ae-color-text-1);
+}
+.ae-typograghy-paragraph-primary,
+.ae-text-primary {
+    color: var(--ae-primary-color);
+}
+.ae-typograghy-paragraph-warning,
+.ae-text-warning {
+    color: var(--ae-color-warning);
+}
+.ae-typograghy-paragraph-error,
+.ae-text-error {
+    color: var(--ae-color-error);
+}
+.ae-typograghy-paragraph-success,
+.ae-text-success {
+    color: var(--ae-color-success);
+}
+.ae-typograghy-paragraph-disabled,
+.ae-text-disabled {
+    color: var(--ae-color-disabled-text);
+}
+.ae-text-underline {
+    text-decoration: underline;
+    a:hover {
+        span {
+            text-decoration: underline;
+        }
+    }
+}
+.ae-text-link {
+    text-decoration: none;
+    a {
+        background-clip: text;
+    }
+}
+.ae-text-deleted {
+    text-decoration: line-through;
+}
+.ae-text-strong {
+    font-weight: 700;
+}
+.ae-typograghy-paragraph-small,
+.ae-text-small {
+    font-size: 12px;
+}
+.ae-typograghy-paragraph-normal,
+.ae-text-normal {
+    font-size: 14px;
+}
+.ae-typograghy-paragraph-large,
+.ae-text-large {
+    font-size: 16px;
+}
+
+
+.ae-typograghy-title {
+    font-weight: 600;
+    margin: 0;
+    color: var(--ae-color-text-0);
+    background-clip: text;
+}
+
+.ae-typograghy-title-inline {
+    display: inline-block;
+}
+
+.ae-typograghy-title-prefix-bar {
+    padding-left: calc(var(--ae-title-prefix-gap, 16) * 1px);
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 12%;
+        width: calc(var(--ae-title-prefix-width, 4) * 1px);
+        height: 76%;
+        background-color: var(--ae-title-prefix-color, var(--ae-primary-color));
+        background-image: linear-gradient(var(--ae-title-prefix-gradient));
+    }
+}
+
+.ae-typograghy-title-prefix-dot {
+    padding-left: calc(var(--ae-title-prefix-gap, 16) * 1px);
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: calc(50% - calc(var(--ae-title-prefix-width, 4) * 1px) / 2);
+        width: calc(var(--ae-title-prefix-width, 4) * 1px);
+        height: calc(var(--ae-title-prefix-width, 4) * 1px);
+        border-radius: 50%;
+        background-color: var(--ae-title-prefix-color, var(--ae-primary-color));
+        background-image: linear-gradient(var(--ae-title-prefix-gradient));
+    }
+}
+
+.ae-typograghy-h1, 
+h1.ae-typograghy-title{
+    font-size: 32px;
+    line-height: 44px;
+}
+.ae-typograghy-h2, 
+h2.ae-typograghy-title{
+    font-size: 28px;
+    line-height: 40px;
+}
+.ae-typograghy-h3, 
+h3.ae-typograghy-title{
+    font-size: 24px;
+    line-height: 32px;
+}
+.ae-typograghy-h4, 
+h4.ae-typograghy-title{
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.ae-typograghy-h5, 
+h5.ae-typograghy-title{
+    font-size: 18px;
+    line-height: 24px;
+}
+.ae-typograghy-h6, 
+h6.ae-typograghy-title{
+    font-size: 16px;
+    line-height: 22px;
+}
+.ae-typograghy-extended,
+p.ae-typograghy-extended {
+    line-height: 24px;
+}
+
+.ae-typograghy-copy {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    cursor: pointer;
+    color: var(--ae-primary-color);
+}
+.ae-typograghy-copyed {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    color: var(--ae-color-success);
+}

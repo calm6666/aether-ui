@@ -1,0 +1,168 @@
+import { createEffect, createSignal, For, untrack } from 'solid-js';
+import { createStore, produce } from 'solid-js/store';
+import { Option } from './Option';
+import { Value } from '../../inner/Value';
+import createField from "../../utils/createField";
+import { useClassList } from '../../utils/useProps';
+import { Dropdown } from '../../Dropdown';
+import { FeatherChevronDown } from 'aether-icons/feather';
+
+
+export interface AutoCompleteOptions {
+    name?: string,
+    value?: any,
+    disabled?: boolean,
+    size?: 'small'|'large',
+    clearable?: boolean,
+    prefix?: any,
+    style?: any,
+    data?: Array<any>,
+    textField?: string,
+    valueField?: string,
+    class?: any,
+    classList?: any,
+    filter?: boolean,
+    placeholder?: string,
+    renderOption?: (data: any) => any,
+    ref?: any,
+    emptyOption?: any,
+    onChange?: (value: any, item?: any) => void,
+    onSearch?: (query: string) =>void,
+    transfer?: boolean,
+    align?: 'bottomLeft'|'bottomRight'
+    asFormField?: boolean
+}
+
+export function AutoComplete (props: AutoCompleteOptions) {
+    const [open, setOpen] = createSignal(false);
+    const align = props.align ?? 'bottomLeft';
+    const [value, setValue] = createField<any>(props, '');
+    const [query, setQuery] = createSignal('');
+
+    const classList = () => useClassList(props, 'ae-select', 'ae-autocomplete', {
+        'ae-select-disabled': props.disabled,
+        [`ae-select-${props.size}`]: props.size,
+        'ae-select-clearable': !props.disabled && props.clearable && (value().length !== 0),
+        'ae-select-open': open(),
+        'ae-select-with-prefix': props.prefix,
+        // 'ae-select-hasEmptyOption': !props.multi && hasEmptyOption
+    });
+    let wrap: any;
+    const textField = 'label';
+    const valueField = props.valueField || 'value';
+    let isClickChanging = false;
+
+    let newData: any[] = [];
+    if (props.data) {
+        newData = props.data.map(item => {
+            if (typeof item === 'object') {
+                item._show = true;
+                return item;
+            } else {
+                return {[valueField]: item, label: item, _show: true};
+            }
+        })
+    }
+
+    const [store, setStore] = createStore({ list: newData });
+
+    createEffect(() => {
+        const val = value();
+        setStore(
+            'list',
+            item => item,
+            produce((item: any) => {
+                item._checked = val === item[valueField];
+            }),
+        );
+    });
+    createEffect(() => {
+        if (props.data) {
+            newData = props.data.map(item => {
+                if (typeof item === 'object') {
+                    item._show = true;
+                    return item;
+                } else {
+                    return {[valueField]: item, label: item, _show: true};
+                }
+            });
+            setStore(
+                'list',
+                () => [...newData],
+            );
+            if (newData.length) {
+                setOpen(true);
+            }
+        }
+    });
+
+    createEffect(() => {
+        const queryStr = query();
+        if (isClickChanging) {
+            return;
+        }
+        if (queryStr.length) {
+            props.onSearch && props.onSearch(queryStr);
+        }
+    })
+
+    const onOptionClick = (v: any, item: any) => {
+        setValue(v);
+        isClickChanging = true;
+        setQuery(item[textField]);
+        queueMicrotask(() => {
+            isClickChanging = false; // 防止触发查询
+        })
+        props.onChange && props.onChange(v, item);
+        setOpen(false);
+    }
+
+    const labels = () => {
+        const v = value();
+        let active: any;
+        untrack(() => {
+            active = store.list.find((item: any) => {
+                return item[valueField] === v;
+            });
+        })
+
+        return active ? active[textField] : (props.emptyOption ? props.emptyOption : '');
+    }
+
+    const onClear = (e: any) => {
+        e.preventDefault && e.preventDefault();
+        e.stopPropagation && e.stopPropagation();
+        props.onChange && props.onChange('');
+        setValue('');
+    }
+
+    const onBeforeDrop = () => {
+        if (store.list && store.list.length) {
+            return true;
+        }
+        return false;
+    }
+
+    return <div classList={classList()} style={props.style} ref={wrap}>
+    <Dropdown transfer={props.transfer} fixWidth align={align} disabled={props.disabled} trigger="click" visible={[open, setOpen]}
+    onBeforeDrop={onBeforeDrop}
+        menu={<div class="ae-select-options-wrap">
+        <div class="ae-select-options">
+            <ul class="ae-select-option-list">
+                <For each={store.list}>
+                    {(item) => {
+                        return <Option renderOption={props.renderOption} visible={item._show}
+                            disabled={item.disabled} data={item} checked={item._checked}
+                            valueField={valueField} textField={textField} onClick={onOptionClick} />
+                    }}
+                </For>
+            </ul>
+        </div>
+    </div>}>
+        <Value text={labels()} disabled={props.disabled} filter query={[query, setQuery]}
+                clearable={props.clearable} onClear={onClear} placeholder={props.placeholder}
+                onlyInput
+                prepend={props.prefix} size={props.size} icon={<FeatherChevronDown class="ae-select-cert"/>} />
+    </Dropdown>
+    </div>
+}

@@ -1,0 +1,184 @@
+.ae-upload {
+    display: inline-flex;
+    flex-direction: column;
+    input.ae-upload-input {
+        display: none;
+    }
+}
+.ae-upload-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 0;
+}
+.ae-upload-files {
+    display: flex;
+    flex-direction: column;
+}
+.ae-upload-list-title {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 4px;
+    gap: 8px;
+}
+.ae-upload-drag {
+    .ae-upload-out {
+        display: flex;
+        padding: 20px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        border: 1px dashed rgb(var(--ae-grey-3));
+        border-radius: var(--ae-border-radius-small);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        -webkit-transition: border-color .2s ease;
+        transition: border-color .2s ease;
+        &:hover {
+            border-color: rgb(var(--ae-blue-5));
+        }
+    }
+}
+.ae-upload-dragOver{
+    .ae-upload-out {
+        border-color: rgb(var(--ae-blue-5));
+    }
+}
+.ae-upload-clear {
+    cursor: pointer;
+}
+.ae-upload-file-card {
+    border-radius: var(--ae-border-radius-small);
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+    width: 250px;
+    background-color: var(--ae-color-fill-0);
+    cursor: pointer;
+    margin-bottom: 8px;
+    &:hover {
+        background-color: var(--ae-color-fill-1);
+    }
+}
+.ae-upload-file-preview-img,
+.ae-upload-file-preview {
+    height: 36px;
+    width: 36px;
+    color: var(--ae-color-text-2);
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--ae-border-radius-small);
+    flex-shrink: 0;
+}
+.ae-upload-file-card-info,
+.ae-upload-file-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    color: var(--ae-color-text-2);
+    font-size: 12px;
+}
+.ae-upload-file-card-info {
+    align-items: flex-end;
+    gap: 2px;
+}
+.ae-upload-file-card-body {
+    flex-direction: column;
+    width: 0;
+}
+.ae-upload-file-card-info-name {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: rgb(var(--ae-grey-8));
+    font-size: 14px;
+}
+.ae-upload-file-control {
+    margin: 0 10px;
+}
+.ae-upload-error {
+    font-size: 12px;
+    .ae-icon {
+        color: rgb(var(--ae-red-5));
+    }
+    .ae-upload-retry {
+        margin-left: 5px;
+    }
+}
+
+.ae-upload-picture-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.ae-upload-picture-add,
+.ae-upload-picture-card {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--ae-border-radius-small);
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.ae-upload-picture-card {
+    position: relative;
+    cursor: pointer;
+    img {
+        object-fit: cover;
+        width: 64px;
+        height: 64px;
+        border-radius: var(--ae-border-radius-small);
+    }
+    &:before {
+        visibility: hidden;
+        background-color: rgba(var(--ae-grey-3), 0.6);
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    &:hover {
+        &:before {
+            visibility: visible;
+        }
+        .ae-upload-picture-preview,
+        .ae-upload-picture-remove {
+            opacity: 1;
+        }
+    }
+}
+.ae-upload-picture-preview,
+.ae-upload-picture-remove {
+    position: absolute;
+    opacity: 0;
+    color: #fff;
+}
+.ae-upload-picture-remove {
+    top: 3px;
+    right: 3px;
+}
+.ae-upload-picture-preview {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.ae-upload-picture-add {
+    background-color: var(--ae-color-fill-0);
+    border: 2px dashed var(--ae-default-border);
+    color: rgb(var(--ae-grey-3));
+    cursor: pointer;
+    &:hover {
+        background-color: var(--ae-color-fill-1);
+    }
+}

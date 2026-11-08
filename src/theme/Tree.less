@@ -1,0 +1,231 @@
+.ae-tree {
+    line-height: 1.5;
+}
+
+.ae-tree-nodes,
+.ae-tree-item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ae-tree-item {
+    white-space: nowrap;
+    margin: 5px 0;
+}
+
+.ae-tree>.ae-tree-nodes {
+    display: block;
+    max-height: none;
+}
+
+.ae-tree-nodes {
+    display: none;
+    // max-height: 0px;
+    overflow-y: hidden;
+    transition: all 0.25s ease-in-out;
+}
+
+.ae-tree-item-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ae-tree-title {
+    flex: 1;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ae-tree-text {
+    cursor: pointer;
+    padding: 0 4px;
+    border-radius: 2px;
+    color: var(--ae-color-text-1);
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+        background: var(--ae-color-fill-1);
+    }
+}
+
+.ae-tree-patch {
+    flex: 1;
+}
+
+.ae-tree-title.disabled {
+    .ae-tree-text {
+        color: var(--ae-color-disabled-text);
+
+        &:hover {
+            background: transparent;
+        }
+    }
+}
+
+.ae-tree-item-file,
+.ae-tree-item-folder {
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    display: inline-block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center 40%;
+}
+
+.ae-tree-item-folder {
+    background-image: url('./imgs/folderClosed.gif');
+}
+
+.ae-tree-item-file {
+    background-image: url('./imgs/leaf.gif');
+}
+
+.ae-tree-arrow {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    display: inline-flex;
+    background-color: transparent;
+    transition: all 0.25s ease-in-out;
+    color: var(--ae-color-text-1);
+
+    &.hide {
+        visibility: hidden;
+    }
+}
+
+.ae-tree-item-open {
+    >.ae-tree-item-content {
+        .ae-tree-item-folder {
+            background-image: url('./imgs/folderOpen.gif');
+        }
+
+        .ae-tree-arrow {
+            transform: rotate(90deg);
+            // background-image: url('./arrow_down.svg');
+        }
+    }
+
+    >.ae-tree-nodes {
+        display: block;
+    }
+}
+
+.ae-tree-nodes-visible.ae-tree-nodes {
+    display: block;
+}
+
+// .ae-tree-nodes-open.ae-tree-nodes{
+
+// }
+
+.ae-tree-item-selected {
+    >.ae-tree-item-content {
+        .ae-tree-text {
+            background: var(--ae-color-fill-1);
+        }
+    }
+}
+
+.ae-tree {
+    .ae-checkbox {
+        margin-right: 0;
+    }
+}
+
+.ae-tree-item {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    &.ae-tree-item-open {
+        .ae-tree-arrow {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.ae-tree-arrow {
+    transition: all 0.25s;
+
+    img {
+        width: 100%;
+    }
+}
+
+.ae-tree-node-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.ae-tree-node-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    user-select: none;
+
+    &.ae-tree-node-drop_active {
+        background-color: rgba(var(--ae-blue-6), 0.15);
+    }
+}
+
+.ae-tree-item-dragging {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 1px solid var(--ae-primary-color);
+        pointer-events: none;
+    }
+}
+
+.ae-tree-item-selected {
+    .ae-tree-text {
+        background: var(--ae-color-fill-1);
+    }
+}
+
+.ae-tree-node-drop {
+    width: 100%;
+    height: 2px;
+
+    &.ae-tree-node-drop_active {
+        background-color: rgba(var(--ae-blue-6), 0.8);
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: -2px;
+            width: 6px;
+            height: 6px;
+            border-radius: 6px;
+            border: 2px solid var(--ae-primary-color);
+        }
+    }
+}
+
+.ae-tree-item-open {
+    .ae-tree-item-folder {
+        background-image: url('./imgs/folderOpen.gif');
+    }
+}
+
+.ae-tree {
+    display: flex;
+}
+
+.ae-tree-empty {
+    width: 100%;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+}

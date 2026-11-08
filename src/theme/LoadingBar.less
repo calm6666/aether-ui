@@ -1,0 +1,24 @@
+.ae-loading-bar {
+    width: 100%;
+    height: 2px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    display: none;
+}
+.ae-loading-bar-inner {
+    -webkit-transition: width .2s linear;
+    transition: width .2s linear;
+    height: 100%;
+}
+.ae-loading-bar-show {
+    display: block;
+}
+.ae-loading-bar-status-success {
+    background-color: var(--ae-primary-color);
+}
+.ae-loading-bar-status-error {
+    background-color: var(--ae-color-error);
+}
